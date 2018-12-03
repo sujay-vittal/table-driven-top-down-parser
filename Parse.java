@@ -1,5 +1,29 @@
-import java.io.*;
+/*
+    @author: sujayvittal 
+    
+    MIT License
 
+    Copyright (c) 2018 Sujay Vittal
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE. 
+*/
+import java.io.*;
 public class Parse
 {
     static final int MAX_LEXEME_LENGTH = 100;
@@ -19,11 +43,9 @@ public class Parse
     static FileReader file2;
     static BufferedReader reader;
     static BufferedReader r2;
-
     static final int LETTER = 0;
     static final int DIGIT = 1;
     static final int UNKNOWN = 99;
-
     static String[] token_dict = new String[MAX_TOKEN_LENGTH];
     static final int INT_LIT = 10;
     static final int IDENT = 11;
@@ -39,6 +61,8 @@ public class Parse
   
     public static void main(String[] args) throws FileNotFoundException {
 
+        // Assigning the token_dict array with descriptive definitions
+
         token_dict[INT_LIT] = "INT_LIT\t";
         token_dict[IDENT] = "IDENT\t";
         token_dict[ASSIGN_OP] = "ASSIGN_OP";
@@ -49,12 +73,11 @@ public class Parse
         token_dict[LEFT_PAREN] = "LEFT_PAREN";
         token_dict[RIGHT_PAREN] = "RIGHT_PAREN";
         token_dict[END_OF_FILE] = "END_OF_FILE";
-
         file = new FileReader("input.txt");
         file2 = new FileReader("input.txt");
         reader = new BufferedReader(file);
         r2 = new BufferedReader(file2);
-
+        // error checking on the file
         if (file == null){
             System.out.println("ERROR - cannot open statements \n");
         }else{
@@ -290,6 +313,10 @@ public class Parse
         return nextToken;
     }
   
+   /*
+        the methods that follow are mainly the error checking methods. 
+   */
+
    // returns true if the char is a letter
 
     static boolean isalpha(char c){
