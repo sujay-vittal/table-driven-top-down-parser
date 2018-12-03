@@ -1,0 +1,1 @@
+(sum + (count * 5) / average EOF
